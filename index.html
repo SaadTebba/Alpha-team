@@ -1,11 +1,726 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ALPHA TEAM — Taekwondo, Kickboxing &amp; Boxing in Tangier</title>
+  <meta name="description" content="Alpha Team (Alpha de Développement Sportif) — taekwondo, kickboxing and boxing club in Achouhadaa, Tangier. Led by Moroccan champion Mohamed Elattari. See the schedule and join the team.">
+  <meta name="theme-color" content="#050607">
+  <!-- TODO: replace with the final production domain -->
+  <link rel="canonical" href="https://www.example.com/">
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ALPHA TEAM">
+  <meta property="og:title" content="ALPHA TEAM — Taekwondo, Kickboxing &amp; Boxing in Tangier">
+  <meta property="og:description" content="Discipline in motion. Taekwondo, kickboxing and boxing in Tangier, led by Moroccan champion Mohamed Elattari.">
+  <meta property="og:url" content="https://www.example.com/">
+  <meta property="og:image" content="assets/images/logo.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="ar_MA">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap">
+
+  <!-- Bootstrap: grid only (no reboot, no components) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+  <!-- Tailwind (Play CDN). Prefixed + preflight off so it never fights the custom design system. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { prefix: 'tw-', corePlugins: { preflight: false } };</script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <script>
+    /* Set language + motion flags before first paint to avoid flashes */
+    (function () {
+      var d = document.documentElement;
+      var lang = 'en';
+      try {
+        var q = new URLSearchParams(location.search).get('lang');
+        lang = (q || localStorage.getItem('alpha-lang') || 'en');
+      } catch (e) {}
+      if (['en', 'fr', 'ar'].indexOf(lang) < 0) lang = 'en';
+      d.lang = lang;
+      d.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      d.classList.add('js');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('reduced-motion');
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "ALPHA TEAM",
+    "alternateName": ["Alpha de Développement Sportif", "ALPHA Taekwondo & Kickboxing"],
+    "description": "Taekwondo, kickboxing and boxing club in Tangier, Morocco.",
+    "url": "https://www.example.com/",
+    "image": "https://www.example.com/assets/images/logo.jpg",
+    "telephone": "+212628358212",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lotissement Zaoudia, Quartier Achouhadaa",
+      "addressLocality": "Tanger",
+      "addressCountry": "MA"
+    },
+    "hasMap": "https://g.co/kgs/H3vC1z",
+    "sameAs": ["https://www.instagram.com/alphateamfight/"],
+    "employee": {
+      "@type": "Person",
+      "name": "Mohamed Elattari",
+      "jobTitle": "Head Coach"
+    }
+  }
+  </script>
 </head>
-<body>
-    
+
+<body class="is-loading">
+  <!-- SVG sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-mark" viewBox="0 0 100 100">
+      <path d="M52 4 98 90H26l5-9h52L47 14z"/><path d="M40 22l5 9-30 59H5z"/><path d="M46 44l20 32H33z"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+    <symbol id="i-arrow-ne" viewBox="0 0 24 24"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8.5 8.5 0 1 1 8.4 19z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8.5c0 3.2 2.8 6.5 6.5 6.5l1-1.6-2-1-1 .9c-1-.4-2.3-1.7-2.8-2.8l.9-1-1-2z" fill="currentColor"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="currentColor"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="currentColor"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+  <!-- ============ LOADER ============ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__panel loader__panel--a"></div>
+    <div class="loader__panel loader__panel--b"></div>
+    <div class="loader__inner">
+      <svg class="loader__mark" viewBox="0 0 100 100">
+        <path d="M52 4 98 90H26l5-9h52L47 14z"/><path d="M40 22l5 9-30 59H5z"/><path d="M46 44l20 32H33z"/>
+      </svg>
+      <div class="loader__words">
+        <span class="loader__word">ALPHA</span>
+        <span class="loader__sub">Développement Sportif</span>
+      </div>
+    </div>
+    <div class="loader__foot">
+      <span class="loader__meta">Tanger — MA</span>
+      <span class="loader__count"><span id="loaderCount">000</span></span>
+    </div>
+    <div class="loader__bar"><i id="loaderBar"></i></div>
+  </div>
+
+  <!-- ============ CURSOR (desktop, fine pointers only) ============ -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__ring"><span class="cursor__label"></span></div>
+    <div class="cursor__dot"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__brand" aria-label="ALPHA TEAM — home" data-cursor="hover">
+      <svg class="nav__mark" aria-hidden="true"><use href="#i-mark"/></svg>
+      <span class="nav__word">ALPHA</span><span class="nav__team">TEAM</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <ul>
+        <li><a href="#manifesto" data-i18n="nav.club">Club</a></li>
+        <li><a href="#disciplines" data-i18n="nav.disciplines">Disciplines</a></li>
+        <li><a href="#schedule" data-i18n="nav.schedule">Schedule</a></li>
+        <li><a href="#coach" data-i18n="nav.coach">Coach</a></li>
+        <li><a href="#life" data-i18n="nav.life">Club life</a></li>
+        <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="#location" data-i18n="nav.location">Location</a></li>
+      </ul>
+      <span class="nav__indicator" aria-hidden="true"></span>
+    </nav>
+
+    <div class="nav__actions">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" class="lang__btn" data-lang="en" lang="en" aria-label="English">EN</button>
+        <button type="button" class="lang__btn" data-lang="fr" lang="fr" aria-label="Français">FR</button>
+        <button type="button" class="lang__btn" data-lang="ar" lang="ar" aria-label="العربية">AR</button>
+      </div>
+      <a href="#join" class="btn btn--accent btn--sm nav__cta" data-magnetic>
+        <span class="btn__label" data-i18n="cta.join">Join the team</span>
+        <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+      </a>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="menu" data-i18n-attr="aria-label:menu.open" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile / fullscreen menu -->
+  <div class="menu" id="menu" hidden>
+    <div class="menu__bg" aria-hidden="true"><svg><use href="#i-mark"/></svg></div>
+    <nav class="menu__nav" aria-label="Mobile">
+      <ol>
+        <li><a href="#manifesto"><em>01</em><span data-i18n="nav.club">Club</span></a></li>
+        <li><a href="#disciplines"><em>02</em><span data-i18n="nav.disciplines">Disciplines</span></a></li>
+        <li><a href="#schedule"><em>03</em><span data-i18n="nav.schedule">Schedule</span></a></li>
+        <li><a href="#coach"><em>04</em><span data-i18n="nav.coach">Coach</span></a></li>
+        <li><a href="#life"><em>05</em><span data-i18n="nav.life">Club life</span></a></li>
+        <li><a href="#gallery"><em>06</em><span data-i18n="nav.gallery">Gallery</span></a></li>
+        <li><a href="#location"><em>07</em><span data-i18n="nav.location">Location</span></a></li>
+      </ol>
+    </nav>
+    <div class="menu__foot">
+      <div class="lang lang--lg" role="group" aria-label="Language">
+        <button type="button" class="lang__btn" data-lang="en" lang="en">EN</button>
+        <button type="button" class="lang__btn" data-lang="fr" lang="fr">FR</button>
+        <button type="button" class="lang__btn" data-lang="ar" lang="ar">AR</button>
+      </div>
+      <a href="tel:+212628358212" class="menu__contact" dir="ltr">06 28 35 82 12</a>
+      <a href="#join" class="btn btn--accent menu__cta"><span class="btn__label" data-i18n="cta.join">Join the team</span><svg class="btn__icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__stage">
+        <div class="hero__glow" aria-hidden="true"></div>
+        <div class="rails" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="hero__ghost" aria-hidden="true">ALPHA</div>
+
+        <div class="hero__frame" data-depth="0.6">
+          <figure class="media media--hero" data-media="hero"></figure>
+          <div class="hero__shade" aria-hidden="true"></div>
+        </div>
+
+        <div class="hero__top">
+          <p class="label"><span class="label__dot"></span>Alpha de Développement Sportif</p>
+          <p class="label label--right" data-i18n="hero.place">Tangier — Morocco</p>
+        </div>
+
+        <div class="hero__content">
+          <h1 id="hero-title" class="sr-only" data-i18n="hero.h1">ALPHA TEAM — Taekwondo, kickboxing and boxing club in Tangier</h1>
+          <p class="hero__eyebrow" aria-hidden="true">
+            <span data-i18n="d.taekwondo">Taekwondo</span><i>/</i>
+            <span data-i18n="d.kickboxing">Kickboxing</span><i>/</i>
+            <span data-i18n="d.boxing">Boxing</span>
+          </p>
+          <p class="hero__statement">
+            <span class="line"><span class="line__in" data-i18n="hero.s1">Discipline</span></span>
+            <span class="line"><span class="line__in accent" data-i18n="hero.s2">in motion.</span></span>
+          </p>
+          <p class="hero__lead" data-i18n="hero.lead">Taekwondo, kickboxing and boxing in Tangier. Athletic development and competition preparation, led by Moroccan champion Mohamed Elattari.</p>
+          <div class="hero__ctas">
+            <a href="#join" class="btn btn--accent" data-magnetic>
+              <span class="btn__label" data-i18n="cta.join">Join the team</span>
+              <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+            <a href="#schedule" class="btn btn--ghost" data-magnetic>
+              <span class="btn__label" data-i18n="cta.schedule">View schedule</span>
+              <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <a href="#schedule" class="next-session hero__next" data-next-session aria-live="polite">
+          <span class="next-session__pulse" aria-hidden="true"></span>
+          <span class="next-session__label" data-ns-label>Next session</span>
+          <span class="next-session__value" data-ns-value>—</span>
+        </a>
+
+        <div class="hero__word" aria-hidden="true">
+          <span>A</span><span>L</span><span>P</span><span>H</span><span>A</span>
+        </div>
+
+        <div class="hero__scroll" aria-hidden="true">
+          <span data-i18n="hero.scroll">Scroll</span><i></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kinetic band -->
+    <div class="band" aria-hidden="true">
+      <div class="band__track" data-marquee>
+        <div class="band__group">
+          <span data-i18n="d.taekwondo">Taekwondo</span><svg><use href="#i-mark"/></svg>
+          <span data-i18n="d.kickboxing">Kickboxing</span><svg><use href="#i-mark"/></svg>
+          <span data-i18n="d.boxing">Boxing</span><svg><use href="#i-mark"/></svg>
+          <span class="is-outline" data-i18n="band.city">Tangier</span><svg><use href="#i-mark"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ MANIFESTO ============ -->
+    <section class="manifesto section" id="manifesto" aria-labelledby="manifesto-title">
+      <div class="wrap">
+        <header class="sec-head">
+          <span class="sec-head__idx">01</span>
+          <span class="sec-head__line" aria-hidden="true"></span>
+          <span class="sec-head__label" data-i18n="manifesto.label">The Alpha code</span>
+        </header>
+
+        <h2 id="manifesto-title" class="manifesto__text" data-split data-i18n-html="manifesto.text">Not a gym you visit. A <em>team</em> you belong to. Technique first, <em>discipline</em> every session, <em>competition</em> when you're ready — and people behind you every step of the way.</h2>
+
+        <ol class="pillars">
+          <li class="pillar"><span class="pillar__n">01</span><h3 class="pillar__t" data-i18n="p.1t">Training</h3><p class="pillar__d" data-i18n="p.1d">Structured sessions, six days a week.</p></li>
+          <li class="pillar"><span class="pillar__n">02</span><h3 class="pillar__t" data-i18n="p.2t">Discipline</h3><p class="pillar__d" data-i18n="p.2d">Respect, punctuality, consistency. On the mat and off it.</p></li>
+          <li class="pillar"><span class="pillar__n">03</span><h3 class="pillar__t" data-i18n="p.3t">Technique</h3><p class="pillar__d" data-i18n="p.3d">Fundamentals, repeated until they become instinct.</p></li>
+          <li class="pillar"><span class="pillar__n">04</span><h3 class="pillar__t" data-i18n="p.4t">Competition</h3><p class="pillar__d" data-i18n="p.4d">Championship preparation, with additional sessions in competition season.</p></li>
+          <li class="pillar"><span class="pillar__n">05</span><h3 class="pillar__t" data-i18n="p.5t">Growth</h3><p class="pillar__d" data-i18n="p.5d">Athletic development you can see, session after session.</p></li>
+          <li class="pillar"><span class="pillar__n">06</span><h3 class="pillar__t" data-i18n="p.6t">Community</h3><p class="pillar__d" data-i18n="p.6d">Trips, outings, football — a team beyond training.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ DISCIPLINES ============ -->
+    <section class="disc section" id="disciplines" aria-labelledby="disc-title" data-active="taekwondo">
+      <div class="disc__bg" aria-hidden="true">
+        <span class="disc__ghost" data-ghost="taekwondo">태권도</span>
+        <span class="disc__ghost" data-ghost="kickboxing">KICK</span>
+        <span class="disc__ghost" data-ghost="boxing">BOX</span>
+      </div>
+
+      <div class="wrap disc__wrap">
+        <header class="sec-head">
+          <span class="sec-head__idx">02</span>
+          <span class="sec-head__line" aria-hidden="true"></span>
+          <span class="sec-head__label" data-i18n="disc.label">Disciplines</span>
+        </header>
+        <h2 id="disc-title" class="sec-title" data-reveal-lines data-i18n="disc.title">Three disciplines. One standard.</h2>
+
+        <div class="disc__grid">
+          <div class="disc__list" role="tablist" aria-label="Disciplines" aria-orientation="vertical">
+            <button class="disc__item is-active" role="tab" id="tab-taekwondo" aria-selected="true" aria-controls="disc-panel" data-disc="taekwondo">
+              <span class="disc__idx">01</span><span class="disc__name" data-i18n="d.taekwondo">Taekwondo</span>
+            </button>
+            <button class="disc__item" role="tab" id="tab-kickboxing" aria-selected="false" aria-controls="disc-panel" data-disc="kickboxing" tabindex="-1">
+              <span class="disc__idx">02</span><span class="disc__name" data-i18n="d.kickboxing">Kickboxing</span>
+            </button>
+            <button class="disc__item" role="tab" id="tab-boxing" aria-selected="false" aria-controls="disc-panel" data-disc="boxing" tabindex="-1">
+              <span class="disc__idx">03</span><span class="disc__name" data-i18n="d.boxing">Boxing</span>
+            </button>
+          </div>
+
+          <div class="disc__visual">
+            <div class="disc__shape" data-cursor="view">
+              <figure class="media disc__media is-active" data-media="disciplines.taekwondo" data-key="taekwondo"></figure>
+              <figure class="media disc__media" data-media="disciplines.kickboxing" data-key="kickboxing"></figure>
+              <figure class="media disc__media" data-media="disciplines.boxing" data-key="boxing"></figure>
+            </div>
+            <span class="disc__tag" aria-hidden="true" data-disc-tag>01 / 03</span>
+          </div>
+
+          <div class="disc__panel" id="disc-panel" role="tabpanel" aria-labelledby="tab-taekwondo" aria-live="polite">
+            <p class="disc__desc" data-disc-desc></p>
+            <div class="disc__meta">
+              <div>
+                <span class="mini-label" data-i18n="disc.days">Training days</span>
+                <div class="week week--mini" data-disc-week></div>
+              </div>
+              <div>
+                <span class="mini-label" data-disc-count-label data-i18n="disc.perDay">Sessions per day</span>
+                <strong class="disc__count" data-disc-count>5</strong>
+              </div>
+            </div>
+            <a href="#schedule" class="link-arrow" data-disc-cta>
+              <span data-disc-cta-label>See the timetable</span>
+              <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCHEDULE ============ -->
+    <section class="sched section" id="schedule" aria-labelledby="sched-title">
+      <div class="wrap">
+        <header class="sec-head">
+          <span class="sec-head__idx">03</span>
+          <span class="sec-head__line" aria-hidden="true"></span>
+          <span class="sec-head__label" data-i18n="sched.label">Timetable</span>
+        </header>
+
+        <div class="sched__head">
+          <h2 id="sched-title" class="sec-title" data-reveal-lines data-i18n="sched.title">Six days a week on the mat.</h2>
+          <p class="sched__intro" data-i18n="sched.intro">Taekwondo on Tuesdays, Thursdays and Saturdays. Kickboxing on Mondays, Wednesdays and Fridays. Pick your slot.</p>
+        </div>
+
+        <div class="sched__tabs" role="tablist" aria-label="Choose a discipline">
+          <button class="sched__tab is-active" role="tab" id="stab-taekwondo" aria-selected="true" aria-controls="sched-panel" data-sched="taekwondo"><span data-i18n="d.taekwondo">Taekwondo</span></button>
+          <button class="sched__tab" role="tab" id="stab-kickboxing" aria-selected="false" aria-controls="sched-panel" data-sched="kickboxing" tabindex="-1"><span data-i18n="d.kickboxing">Kickboxing</span></button>
+          <button class="sched__tab" role="tab" id="stab-boxing" aria-selected="false" aria-controls="sched-panel" data-sched="boxing" tabindex="-1"><span data-i18n="d.boxing">Boxing</span></button>
+          <span class="sched__ink" aria-hidden="true"></span>
+        </div>
+
+        <div class="sched__board" id="sched-panel" role="tabpanel" aria-labelledby="stab-taekwondo">
+          <div class="sched__side">
+            <div class="sched__bigname" data-sched-name aria-hidden="true">Taekwondo</div>
+            <div>
+              <span class="mini-label" data-i18n="disc.days">Training days</span>
+              <div class="week" data-sched-week></div>
+            </div>
+            <div class="sched__stats">
+              <div><strong data-sched-count>5</strong><span class="mini-label" data-i18n="sched.daily">Daily sessions</span></div>
+              <div><strong data-sched-range dir="ltr">16–21:30</strong><span class="mini-label" data-i18n="sched.window">Training window</span></div>
+            </div>
+            <a href="#schedule" class="next-session next-session--inline" data-next-session>
+              <span class="next-session__pulse" aria-hidden="true"></span>
+              <span class="next-session__label" data-ns-label>Next session</span>
+              <span class="next-session__value" data-ns-value>—</span>
+            </a>
+          </div>
+
+          <div class="sched__main">
+            <div class="timeline" data-timeline>
+              <div class="timeline__axis" data-axis aria-hidden="true"></div>
+              <ol class="timeline__slots" data-slots></ol>
+            </div>
+
+            <div class="sched__onrequest" data-onrequest hidden>
+              <span class="mini-label" data-i18n="d.boxing">Boxing</span>
+              <p class="sched__onrequest-title" data-i18n="sched.boxTitle">Schedule on request</p>
+              <p data-i18n="sched.boxText">Boxing is part of the Alpha programme. Call or message the club for the current timetable.</p>
+              <div class="tw-flex tw-flex-wrap tw-gap-3">
+                <a href="tel:+212628358212" class="btn btn--accent btn--sm" data-magnetic><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg><span class="btn__label" data-i18n="loc.call">Call</span></a>
+                <a href="https://wa.me/212628358212" target="_blank" rel="noopener" class="btn btn--ghost btn--sm" data-wa data-magnetic><svg class="btn__icon" aria-hidden="true"><use href="#i-wa"/></svg><span class="btn__label">WhatsApp</span></a>
+              </div>
+            </div>
+
+            <aside class="season">
+              <svg class="season__icon" aria-hidden="true"><use href="#i-bolt"/></svg>
+              <div>
+                <strong data-i18n="sched.seasonT">Competition season</strong>
+                <p data-i18n="sched.seasonD">Additional sessions may be organised during championship preparation.</p>
+              </div>
+            </aside>
+            <p class="sched__tz" data-i18n="sched.tz">All times are local (Tangier).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COACH ============ -->
+    <section class="coach section" id="coach" aria-labelledby="coach-title">
+      <div class="coach__vertical" aria-hidden="true">ELATTARI</div>
+      <div class="wrap coach__wrap">
+        <div class="coach__portrait">
+          <div class="coach__frame" data-reveal-clip>
+            <figure class="media media--coach" data-media="coach"></figure>
+          </div>
+          <span class="coach__badge" aria-hidden="true"><svg><use href="#i-mark"/></svg></span>
+          <span class="coach__caption mini-label" data-i18n="coach.label">Head coach</span>
+        </div>
+
+        <div class="coach__body">
+          <header class="sec-head">
+            <span class="sec-head__idx">04</span>
+            <span class="sec-head__line" aria-hidden="true"></span>
+            <span class="sec-head__label" data-i18n="coach.label">Head coach</span>
+          </header>
+
+          <h2 id="coach-title" class="coach__name">
+            <span class="line"><span class="line__in is-outline" data-i18n="coach.first">Mohamed</span></span>
+            <span class="line"><span class="line__in" data-i18n="coach.last">Elattari</span></span>
+          </h2>
+
+          <div class="roles" aria-label="Roles">
+            <span class="roles__item" data-i18n="coach.r1">Head coach</span><i></i>
+            <span class="roles__item" data-i18n="coach.r2">Athlete</span><i></i>
+            <span class="roles__item" data-i18n="coach.r3">Competitor</span><i></i>
+            <span class="roles__item" data-i18n="coach.r4">Mentor</span>
+          </div>
+
+          <p class="coach__bio" data-i18n="coach.bio">Mohamed Elattari is a Moroccan athlete and experienced martial artist — Moroccan championship titles, multiple competitive titles throughout his career, and 6th place at the Junior Olympics in taekwondo.</p>
+
+          <ul class="feats">
+            <li class="feat feat--main">
+              <span class="feat__big"><span data-count="6">6</span><sup data-i18n="coach.th">th</sup></span>
+              <span class="feat__label" data-i18n="coach.f1">Junior Olympics · Taekwondo</span>
+            </li>
+            <li class="feat">
+              <span class="feat__big feat__big--word" data-i18n="coach.f2big">Champion</span>
+              <span class="feat__label" data-i18n="coach.f2">Moroccan championship titles</span>
+            </li>
+            <li class="feat">
+              <span class="feat__big feat__big--word" data-i18n="coach.f3big">Titles</span>
+              <span class="feat__label" data-i18n="coach.f3">Multiple competitive titles throughout his career</span>
+            </li>
+          </ul>
+
+          <p class="coach__line" data-i18n="coach.line">Experience from the competition mat — passed on, session by session.</p>
+          <a href="#join" class="btn btn--ghost" data-magnetic><span class="btn__label" data-i18n="coach.cta">Train with the coach</span><svg class="btn__icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CLUB LIFE ============ -->
+    <section class="life" id="life" aria-labelledby="life-title">
+      <div class="life__pin">
+        <div class="life__track" data-life-track data-cursor="drag">
+          <div class="life__intro">
+            <header class="sec-head">
+              <span class="sec-head__idx">05</span>
+              <span class="sec-head__line" aria-hidden="true"></span>
+              <span class="sec-head__label" data-i18n="life.label">Club life</span>
+            </header>
+            <h2 id="life-title" class="life__title">
+              <span class="line"><span class="line__in" data-i18n="life.l1">Train together.</span></span>
+              <span class="line"><span class="line__in is-outline" data-i18n="life.l2">Compete together.</span></span>
+              <span class="line"><span class="line__in accent" data-i18n="life.l3">Stay together.</span></span>
+            </h2>
+            <p class="life__lead" data-i18n="life.lead">Alpha doesn't stop at the gym door. Trips, outings, football matches and group activities — the people you train with become the people you spend your time with.</p>
+            <span class="life__hint" aria-hidden="true"><span data-i18n="life.hint">Keep scrolling</span><svg><use href="#i-arrow"/></svg></span>
+          </div>
+
+          <div class="life__cards" data-life-cards></div>
+
+          <div class="life__end">
+            <p class="life__end-word" aria-hidden="true" data-i18n="life.word">Together</p>
+            <p class="life__end-text" data-i18n="life.end">Your team is waiting.</p>
+            <a href="#join" class="btn btn--accent" data-magnetic><span class="btn__label" data-i18n="cta.join">Join the team</span><svg class="btn__icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+        <div class="life__progress" aria-hidden="true"><i data-life-progress></i></div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="gallery section" id="gallery" aria-labelledby="gallery-title">
+      <div class="wrap">
+        <header class="sec-head">
+          <span class="sec-head__idx">06</span>
+          <span class="sec-head__line" aria-hidden="true"></span>
+          <span class="sec-head__label" data-i18n="gallery.label">Gallery</span>
+        </header>
+        <div class="gallery__head">
+          <h2 id="gallery-title" class="sec-title" data-reveal-lines data-i18n="gallery.title">Straight from the mat.</h2>
+          <div class="filters" role="group" aria-label="Filter gallery">
+            <button type="button" class="filter is-active" data-filter="all" aria-pressed="true"><span data-i18n="gallery.all">All</span><sup data-count-for="all"></sup></button>
+            <button type="button" class="filter" data-filter="training" aria-pressed="false"><span data-i18n="gallery.training">Training</span><sup data-count-for="training"></sup></button>
+            <button type="button" class="filter" data-filter="competition" aria-pressed="false"><span data-i18n="gallery.competition">Competition</span><sup data-count-for="competition"></sup></button>
+            <button type="button" class="filter" data-filter="club" aria-pressed="false"><span data-i18n="gallery.club">Club life</span><sup data-count-for="club"></sup></button>
+          </div>
+        </div>
+        <ul class="gallery__grid" id="galleryGrid"></ul>
+      </div>
+
+      <!-- Instagram CTA -->
+      <a class="ig" href="https://www.instagram.com/alphateamfight/" target="_blank" rel="noopener" data-cursor="open" aria-label="Instagram @alphateamfight">
+        <div class="ig__marquee" aria-hidden="true">
+          <div class="ig__track" data-marquee data-speed="60">
+            <span>@ALPHATEAMFIGHT</span><svg><use href="#i-mark"/></svg><span class="is-outline">@ALPHATEAMFIGHT</span><svg><use href="#i-mark"/></svg>
+          </div>
+        </div>
+        <div class="wrap ig__row">
+          <div>
+            <span class="mini-label"><svg class="ig__icon" aria-hidden="true"><use href="#i-ig"/></svg> Instagram</span>
+            <p class="ig__title" data-i18n="ig.title">Every round. Posted.</p>
+            <p class="ig__text" data-i18n="ig.text">Training, fight days and club life — follow the team.</p>
+          </div>
+          <div class="ig__stats">
+            <div><strong data-ig="posts">221</strong><span data-i18n="ig.posts">Posts</span></div>
+            <div><strong data-ig="followers">2,665</strong><span data-i18n="ig.followers">Followers</span></div>
+          </div>
+          <span class="btn btn--accent ig__btn"><span class="btn__label" data-i18n="ig.cta">Follow @alphateamfight</span><svg class="btn__icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></span>
+        </div>
+      </a>
+    </section>
+
+    <!-- ============ LOCATION ============ -->
+    <section class="loc section" id="location" aria-labelledby="loc-title">
+      <div class="loc__city" aria-hidden="true" data-i18n="loc.city">Tangier</div>
+      <div class="wrap">
+        <header class="sec-head">
+          <span class="sec-head__idx">07</span>
+          <span class="sec-head__line" aria-hidden="true"></span>
+          <span class="sec-head__label" data-i18n="loc.label">Location</span>
+        </header>
+        <div class="row g-4 g-lg-5 align-items-stretch">
+          <div class="col-lg-5">
+            <h2 id="loc-title" class="sec-title" data-reveal-lines data-i18n="loc.title">Find us in Tangier.</h2>
+            <dl class="loc__info">
+              <div data-aos="fade-up">
+                <dt class="mini-label" data-i18n="loc.address">Address</dt>
+                <dd>
+                  <address>Lotissement Zaoudia<br>Quartier Achouhadaa<br><span data-i18n="loc.cityLine">Tangier, Morocco</span></address>
+                </dd>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="80">
+                <dt class="mini-label" data-i18n="loc.phone">Phone</dt>
+                <dd><a href="tel:+212628358212" class="loc__phone" dir="ltr">06 28 35 82 12</a></dd>
+              </div>
+            </dl>
+            <div class="loc__ctas" data-aos="fade-up" data-aos-delay="160">
+              <a href="https://g.co/kgs/H3vC1z" target="_blank" rel="noopener" class="btn btn--accent" data-magnetic><svg class="btn__icon" aria-hidden="true"><use href="#i-pin"/></svg><span class="btn__label" data-i18n="loc.dir">Get directions</span></a>
+              <a href="tel:+212628358212" class="btn btn--ghost" data-magnetic><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg><span class="btn__label" data-i18n="loc.call">Call</span></a>
+              <a href="https://wa.me/212628358212" target="_blank" rel="noopener" class="btn btn--ghost" data-wa data-magnetic><svg class="btn__icon" aria-hidden="true"><use href="#i-wa"/></svg><span class="btn__label">WhatsApp</span></a>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="map" data-reveal-clip>
+              <span class="map__corner map__corner--tl" aria-hidden="true"></span>
+              <span class="map__corner map__corner--br" aria-hidden="true"></span>
+              <iframe class="map__frame" data-map-src title="Map: ALPHA TEAM, Achouhadaa, Tangier" data-i18n-attr="title:loc.mapTitle" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+              <div class="map__chip">
+                <svg aria-hidden="true"><use href="#i-pin"/></svg>
+                <span>ALPHA TEAM · Achouhadaa</span>
+              </div>
+              <a href="https://g.co/kgs/H3vC1z" target="_blank" rel="noopener" class="map__open"><span data-i18n="loc.open">Open in Google Maps</span><svg aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JOIN ============ -->
+    <section class="join section" id="join" aria-labelledby="join-title">
+      <div class="join__glow" aria-hidden="true"></div>
+      <div class="wrap">
+        <header class="sec-head">
+          <span class="sec-head__idx">08</span>
+          <span class="sec-head__line" aria-hidden="true"></span>
+          <span class="sec-head__label" data-i18n="join.label">Join</span>
+        </header>
+        <p class="join__kicker" data-i18n="join.kicker">Ready to train?</p>
+        <h2 id="join-title" class="join__title">
+          <span class="line"><span class="line__in" data-i18n="join.t1">Join</span></span>
+          <span class="line"><span class="line__in accent" data-i18n="join.t2">Alpha.</span></span>
+        </h2>
+
+        <div class="row g-5 join__row">
+          <div class="col-lg-7">
+            <p class="join__lead" data-i18n="join.lead">Call, message or walk in. Tell us which discipline you're interested in — we'll tell you when to show up.</p>
+            <ul class="contact-rows">
+              <li><a class="crow" href="tel:+212628358212" data-cursor="hover">
+                <span class="crow__n">01</span><span class="crow__k" data-i18n="loc.call">Call</span>
+                <span class="crow__v" dir="ltr">06 28 35 82 12</span><svg class="crow__a" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a class="crow" href="https://wa.me/212628358212" target="_blank" rel="noopener" data-wa data-cursor="hover">
+                <span class="crow__n">02</span><span class="crow__k">WhatsApp</span>
+                <span class="crow__v" data-i18n="join.waSub">Message the club</span><svg class="crow__a" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a class="crow" href="https://www.instagram.com/alphateamfight/" target="_blank" rel="noopener" data-cursor="hover">
+                <span class="crow__n">03</span><span class="crow__k">Instagram</span>
+                <span class="crow__v" dir="ltr">@alphateamfight</span><svg class="crow__a" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a class="crow" href="https://g.co/kgs/H3vC1z" target="_blank" rel="noopener" data-cursor="hover">
+                <span class="crow__n">04</span><span class="crow__k" data-i18n="join.visit">Visit</span>
+                <span class="crow__v">Zaoudia · Achouhadaa</span><svg class="crow__a" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-5">
+            <!--
+              Frontend-only form. It does not post anywhere: on submit it opens WhatsApp
+              with the message pre-filled. To use a real backend or email service
+              (Formspree, Netlify Forms, your own API…), replace `sendMessage()` in js/main.js.
+            -->
+            <form class="form" id="joinForm" novalidate>
+              <p class="form__title" data-i18n="form.title">Send a message</p>
+              <div class="field">
+                <input id="f-name" name="name" type="text" autocomplete="name" required placeholder=" ">
+                <label for="f-name" data-i18n="form.name">Your name</label>
+              </div>
+              <div class="field">
+                <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder=" ">
+                <label for="f-phone" data-i18n="form.phone">Phone (optional)</label>
+              </div>
+              <fieldset class="chips">
+                <legend class="mini-label" data-i18n="form.discipline">Discipline</legend>
+                <label class="chip"><input type="radio" name="discipline" value="taekwondo" checked><span data-i18n="d.taekwondo">Taekwondo</span></label>
+                <label class="chip"><input type="radio" name="discipline" value="kickboxing"><span data-i18n="d.kickboxing">Kickboxing</span></label>
+                <label class="chip"><input type="radio" name="discipline" value="boxing"><span data-i18n="d.boxing">Boxing</span></label>
+                <label class="chip"><input type="radio" name="discipline" value="unsure"><span data-i18n="form.unsure">Not sure yet</span></label>
+              </fieldset>
+              <div class="field">
+                <textarea id="f-msg" name="message" rows="3" placeholder=" "></textarea>
+                <label for="f-msg" data-i18n="form.message">Message — age, experience, goals</label>
+              </div>
+              <p class="form__error" id="formError" role="alert" hidden data-i18n="form.error">Please enter your name.</p>
+              <button type="submit" class="btn btn--accent btn--block" data-magnetic>
+                <svg class="btn__icon" aria-hidden="true"><use href="#i-wa"/></svg>
+                <span class="btn__label" data-i18n="form.submit">Send via WhatsApp</span>
+              </button>
+              <p class="form__note" data-i18n="form.note">Opens WhatsApp with your message ready to send. Nothing is stored on this site.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="row g-4 footer__cols">
+        <div class="col-md-5">
+          <a href="#top" class="nav__brand footer__brand" aria-label="ALPHA TEAM — back to top">
+            <svg class="nav__mark" aria-hidden="true"><use href="#i-mark"/></svg>
+            <span class="nav__word">ALPHA</span><span class="nav__team">TEAM</span>
+          </a>
+          <p class="footer__tag">Alpha de Développement Sportif<br><span data-i18n="footer.tag">Taekwondo · Kickboxing · Boxing — Tangier</span></p>
+        </div>
+        <div class="col-6 col-md-3">
+          <p class="mini-label" data-i18n="footer.explore">Explore</p>
+          <ul class="footer__list">
+            <li><a href="#disciplines" data-i18n="nav.disciplines">Disciplines</a></li>
+            <li><a href="#schedule" data-i18n="nav.schedule">Schedule</a></li>
+            <li><a href="#coach" data-i18n="nav.coach">Coach</a></li>
+            <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <p class="mini-label" data-i18n="footer.contact">Contact</p>
+          <ul class="footer__list">
+            <li><a href="tel:+212628358212" dir="ltr">06 28 35 82 12</a></li>
+            <li><a href="https://wa.me/212628358212" target="_blank" rel="noopener" data-wa>WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/alphateamfight/" target="_blank" rel="noopener" dir="ltr">@alphateamfight</a></li>
+            <li><a href="https://g.co/kgs/H3vC1z" target="_blank" rel="noopener">Lotissement Zaoudia, Achouhadaa</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© <span data-year>2026</span> Alpha de Développement Sportif. <span data-i18n="footer.rights">All rights reserved.</span></p>
+        <a href="#top" class="footer__top"><span data-i18n="footer.top">Back to top</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+    <div class="footer__word" aria-hidden="true">ALPHA</div>
+  </footer>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+    <div class="lightbox__backdrop" data-lb-close></div>
+    <figure class="lightbox__figure">
+      <div class="lightbox__img media" data-lb-media></div>
+      <figcaption class="lightbox__cap"><span data-lb-cat></span><span data-lb-alt></span><span class="lightbox__count" data-lb-count dir="ltr"></span></figcaption>
+    </figure>
+    <button type="button" class="lightbox__btn lightbox__close" data-lb-close data-i18n-attr="aria-label:lb.close" aria-label="Close">✕</button>
+    <button type="button" class="lightbox__btn lightbox__prev" data-lb-prev data-i18n-attr="aria-label:lb.prev" aria-label="Previous"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    <button type="button" class="lightbox__btn lightbox__next" data-lb-next data-i18n-attr="aria-label:lb.next" aria-label="Next"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+  </div>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+
+  <!-- App -->
+  <script src="js/config.js" defer></script>
+  <script src="js/images.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/media.js" defer></script>
+  <script src="js/schedule.js" defer></script>
+  <script src="js/gallery.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
